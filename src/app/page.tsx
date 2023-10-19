@@ -65,7 +65,7 @@ export default function Home() {
       });
   };
 
-  if (!window) return <></>;
+  // if (!window) return <></>;
 
   return (
     <div className="w-full h-full flex justify-center items-center flex-col">
@@ -149,17 +149,17 @@ export default function Home() {
       </div>
       <div>
         <div className="w-[500px]">
-          {!!window && (
+          {/* {!!window && (
             <HoverVideoPlayer  videoSrc="https://labcode-core-local.s3.ap-northeast-2.amazonaws.com/sample_embedded.mp4" />
-          )}
+          )} */}
         </div>
 
-        {!!window && (
+        {/* {!!window && (
           <ReactPlayer
             url="https://www.youtube.com/watch?v=LXb3EKWsInQ"
             light={true}
           />
-        )}
+        )} */}
       </div>
       <div>워터마크 정보 입력</div>
       <div>워터마크 적용하기</div>
