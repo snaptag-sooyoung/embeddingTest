@@ -22,60 +22,60 @@ export default function Home() {
   const [testImage, setTestImage] = useState<string | undefined>(undefined);
   const [curFile, setCurFile] = useState<File | null>(null);
 
-  const onDrop = useCallback(async (acceptedFiles: any) => {
-    // Do something with the files
-    console.log(acceptedFiles[0]);
-    setCurFile(acceptedFiles[0]);
+  // const onDrop = useCallback(async (acceptedFiles: any) => {
+  //   // Do something with the files
+  //   console.log(acceptedFiles[0]);
+  //   setCurFile(acceptedFiles[0]);
 
-    try {
-      const fileArr = acceptedFiles;
-      let test: any;
-      // let fileReader = new FileReader();
-      // fileReader.onload = () => {
-      //   if (typeof fileReader.result === "string") {
-      //     console.log(fileReader.result);
-      //   }
-      // };
-      // fileReader.readAsDataURL(acceptedFiles[0]);
+  //   try {
+  //     const fileArr = acceptedFiles;
+  //     let test: any;
+  //     // let fileReader = new FileReader();
+  //     // fileReader.onload = () => {
+  //     //   if (typeof fileReader.result === "string") {
+  //     //     console.log(fileReader.result);
+  //     //   }
+  //     // };
+  //     // fileReader.readAsDataURL(acceptedFiles[0]);
 
-      const fileDataUrl = await new Promise((resolve, reject) => {
-        let reader = new FileReader();
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(acceptedFiles[0]);
-      });
+  //     const fileDataUrl = await new Promise((resolve, reject) => {
+  //       let reader = new FileReader();
+  //       reader.onload = () => resolve(reader.result);
+  //       reader.onerror = reject;
+  //       reader.readAsDataURL(acceptedFiles[0]);
+  //     });
 
-      // let file: any;
-      // let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
-      // let test = [];
+  //     // let file: any;
+  //     // let filesLength = fileArr.length > 10 ? 10 : fileArr.length;
+  //     // let test = [];
 
-      // for (let i = 0; i < filesLength; i++) {
-      //   file = fileArr[i];
-      //   test.push(file);
+  //     // for (let i = 0; i < filesLength; i++) {
+  //     //   file = fileArr[i];
+  //     //   test.push(file);
 
-      //   const fileDateUrl = await new Promise((resolve, reject) => {
-      //     let reader = new FileReader();
-      //     reader.onload = () => resolve(reader.result);
-      //     reader.onerror = reject;
-      //     reader.readAsDataURL(file);
-      //   });
-      //   setTicketImg((prevImg: string[]) => [...prevImg, fileDateUrl]);
-      // }
-      // setTicketImageList(test);
+  //     //   const fileDateUrl = await new Promise((resolve, reject) => {
+  //     //     let reader = new FileReader();
+  //     //     reader.onload = () => resolve(reader.result);
+  //     //     reader.onerror = reject;
+  //     //     reader.readAsDataURL(file);
+  //     //   });
+  //     //   setTicketImg((prevImg: string[]) => [...prevImg, fileDateUrl]);
+  //     // }
+  //     // setTicketImageList(test);
 
-      // await setTestImage(fileDataUrl);
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    multiple: false,
-    accept: {
-      "video/*": [".mp4"],
-      // "image/*": [".png", ".jpg", ".jpeg"],
-    },
-  });
+  //     // await setTestImage(fileDataUrl);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, []);
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  //   onDrop,
+  //   multiple: false,
+  //   accept: {
+  //     "video/*": [".mp4"],
+  //     // "image/*": [".png", ".jpg", ".jpeg"],
+  //   },
+  // });
 
   const ranImage = (curImage: number): any => {
     const ranNum = Math.floor(Math.random() * 7);
@@ -111,32 +111,32 @@ export default function Home() {
       });
   };
 
-  const videoEmbeddingHandler = () => {
-    axios
-      .post("https://dev.admin.snaptag.co.kr/v1/ai/product/before-embedding", {
-        email: "sooyoung159@naver.com",
-        text: "test",
-        alpha: 4,
-      })
-      .then((data) => {
-        console.log(data.data);
-        axios
-          .post("https://dev.admin.snaptag.co.kr/v1/ai/product/video", {
-            productId: data.data.productId,
-            videoUrl:
-              "https://labcode-core-dev.s3.ap-northeast-2.amazonaws.com/media//file/sourceImage/2023-10-23/%C3%A1%C2%84%C2%80%C3%A1%C2%85%C2%A1%C3%A1%C2%86%C2%BC%C3%A1%C2%84%C2%8B%C3%A1%C2%85%C2%A1%C3%A1%C2%84%C2%8C%C3%A1%C2%85%C2%B5.mp4",
-          })
-          .then((data) => {
-            console.log(data.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const videoEmbeddingHandler = () => {
+  //   axios
+  //     .post("https://dev.admin.snaptag.co.kr/v1/ai/product/before-embedding", {
+  //       email: "sooyoung159@naver.com",
+  //       text: "test",
+  //       alpha: 4,
+  //     })
+  //     .then((data) => {
+  //       console.log(data.data);
+  //       axios
+  //         .post("https://dev.admin.snaptag.co.kr/v1/ai/product/video", {
+  //           productId: data.data.productId,
+  //           videoUrl:
+  //             "https://labcode-core-dev.s3.ap-northeast-2.amazonaws.com/media//file/sourceImage/2023-10-23/%C3%A1%C2%84%C2%80%C3%A1%C2%85%C2%A1%C3%A1%C2%86%C2%BC%C3%A1%C2%84%C2%8B%C3%A1%C2%85%C2%A1%C3%A1%C2%84%C2%8C%C3%A1%C2%85%C2%B5.mp4",
+  //         })
+  //         .then((data) => {
+  //           console.log(data.data);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const downloadHandler = () => {
     if (!testImage) return;
@@ -258,15 +258,15 @@ export default function Home() {
         </div>
         {!!testImage && (
           <div>
-            <img src={testImage} alt="test" width={320} height={320} />
+            <img src={testImage} alt="test" className="w-[320px] h-[320px]" />
           </div>
         )}
         <div
-          {...getRootProps()}
+          // {...getRootProps()}
           // onClick={addTicketImgHandler}
           className="w-full h-[203px] border border-solid border-border rounded-[8px] flex justify-center items-center flex-col"
         >
-          <input {...getInputProps()} className="hidden" />
+          {/* <input {...getInputProps()} className="hidden" /> */}
           {/* <div>
             <Image src={upload} alt="upload" />
           </div> */}
